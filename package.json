@@ -2,7 +2,7 @@
     "name": "kdelixir",
     "displayName": "Kandis Elixir",
     "description": "Kandis Elixir Extension",
-    "version": "0.0.1",
+    "version": "0.0.5",
     "publisher": "werkzeugh",
     "engines": {
         "vscode": "^1.32.0"
@@ -12,18 +12,30 @@
     ],
     "activationEvents": [
         "onCommand:extension.toggleUnderscore",
-        "onCommand:extension.addGuards"
-
+        "onCommand:extension.addGuards",
+        "onCommand:extension.copyModuleName"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [{
-            "command": "extension.toggleUnderscore",
-            "title": "Toggles underscore-prepend"
-        }, {
-            "command": "extension.addGuards",
-            "title": "adds Guards from parameters"
-        }]
+                "command": "extension.toggleUnderscore",
+                "title": "Toggles underscore-prepend"
+            }, {
+                "command": "extension.addGuards",
+                "title": "adds Guards from parameters"
+            },
+            {
+                "command": "extension.copyModuleName",
+                "title": "copy Module Name (elixir)"
+            }
+        ],
+        "menus": {
+            "explorer/context": [{
+                "when": "!explorerResourceIsFolder",
+                "group": "7_modification",
+                "command": "extension.copyModuleName"
+            }]
+        }
     },
     "scripts": {
         "vscode:prepublish": "yarn run compile",
