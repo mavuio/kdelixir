@@ -15,7 +15,7 @@
         "onCommand:extension.addGuards",
         "onCommand:extension.copyModuleName"
     ],
-    "main": "./out/extension",
+    "main": "./extension.js",
     "contributes": {
         "commands": [{
                 "command": "extension.toggleUnderscore",
@@ -38,10 +38,9 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "yarn run compile",
-        "compile": "tsc -p ./",
-        "lint": "eslint . --ext .ts,.tsx",
-        "watch": "tsc -watch -p ./"
+        "lint": "eslint .",
+        "pretest": "pnpm run lint",
+        "test": "node ./test/runTest.js"
     },
     "devDependencies": {
         "@types/node": "^12.12.0",
